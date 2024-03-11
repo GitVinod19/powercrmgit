@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<savedqueries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <savedquery>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>1</CanBeDeleted>
+    <isquickfindquery>0</isquickfindquery>
+    <isprivate>0</isprivate>
+    <isdefault>0</isdefault>
+    <savedqueryid>{47117cb9-eec4-ee11-9078-6045bd05f334}</savedqueryid>
+    <layoutxml>
+      <grid name="resultset" jump="van_name" select="1" icon="1" preview="1">
+        <row name="result" id="van_studentdetailid">
+          <cell name="van_firstname" width="103" />
+          <cell name="van_lastname" width="102" />
+          <cell name="van_parent" width="100" />
+          <cell name="van_contact" width="100" />
+        </row>
+      </grid>
+    </layoutxml>
+    <querytype>0</querytype>
+    <fetchxml>
+      <fetch version="1.0" mapping="logical">
+        <entity name="van_studentdetail">
+          <attribute name="van_studentdetailid" />
+          <filter type="and">
+            <condition attribute="statecode" operator="eq" value="0" />
+          </filter>
+          <attribute name="van_firstname" />
+          <attribute name="van_lastname" />
+          <attribute name="van_parent" />
+          <attribute name="van_contact" />
+        </entity>
+      </fetch>
+    </fetchxml>
+    <IntroducedVersion>1.0.0.0</IntroducedVersion>
+    <LocalizedNames>
+      <LocalizedName description="Student Details" languagecode="1033" />
+    </LocalizedNames>
+  </savedquery>
+</savedqueries>
