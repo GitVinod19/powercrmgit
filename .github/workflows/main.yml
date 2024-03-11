@@ -5,12 +5,11 @@ name: export-and-branch-solution
 on:
   workflow_dispatch:
     inputs:
-           # Change this value
-      solution_name:
+      # Change this value
+      solution_name: 
         description: 'name of the solution to worked on from Power Platform'
         required: true
-        default: ALMLab
-       
+        default: DemoSolution
        #Do Not change these values
       solution_exported_folder:
         description: 'folder name for staging the exported solution *do not change*'
@@ -20,22 +19,21 @@ on:
         description: 'staging the unpacked solution folder before check-in *do not change*'
         required: true
         default: out/solutions/
-      solution_target_folder:
+      solution_target_folder: 
        description: 'folder name to be created and checked in *do not change*'
        required: true
        default: solutions/
-
 env:
 #edit your values here
-  ENVIRONMENT_URL: https://orga696181f.crm8.dynamics.com/
-  USERNAME: admin@Dynamic996.onmicrosoft.com
-
+  ENVIRONMENT_URL: 'https://orga696181f.crm8.dynamics.com/'
+  CLIENT_ID: '9fd37424-9966-493e-9fe4-2c9512858e74'
+  TENANT_ID: '23bed4b1-e128-4a5b-8e9c-2b9c6a3d1e8b'
 permissions:
   contents: write
-
 jobs:
   export-from-dev:
     runs-on: windows-latest
+    # or you can say runs-on: ubuntu-latest
     env:
       RUNNER_DEBUG: 1
 
@@ -48,18 +46,20 @@ jobs:
       uses: microsoft/powerplatform-actions/who-am-i@v0
       with:
         environment-url: ${{env.ENVIRONMENT_URL}}
-        user-name: ${{env.USERNAME}}
-        password-secret: ${{ secrets.password }}
+        app-id: ${{env.CLIENT_ID}}
+        client-secret: ${{ secrets.PowerPlatformSPN }}
+        tenant-id: ${{env.TENANT_ID}}
+
 
     - name: export-solution action
       uses: microsoft/powerplatform-actions/export-solution@v0
       with:
         environment-url: ${{env.ENVIRONMENT_URL}}
-        user-name: ${{env.USERNAME}}
-        password-secret: ${{ secrets.password }}
+        app-id: ${{env.CLIENT_ID}}
+        client-secret: ${{ secrets.PowerPlatformSPN }}
+        tenant-id: ${{env.TENANT_ID}}
         solution-name: ${{ github.event.inputs.solution_name }}
         solution-output-file: ${{ github.event.inputs.solution_exported_folder}}/${{ github.event.inputs.solution_name }}.zip
-
 
     - name: unpack-solution action
       uses: microsoft/powerplatform-actions/unpack-solution@v0
