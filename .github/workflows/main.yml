@@ -28,7 +28,7 @@ on:
 env:
 #edit your values here
   ENVIRONMENT_URL: https://orga696181f.crm8.dynamics.com/
-  USERNAME: vishalkumarvangala@gmail.com
+  USERNAME: admin@Dynamic996.onmicrosoft.com
 
 permissions:
   contents: write
