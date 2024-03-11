@@ -11,7 +11,7 @@ jobs:
     uses: deepikathummala/Powerapps/.github/workflows/release-solution-to-prod-with-inputs.yml@main
     with:
       #You can specify the solution name here.
-      solution_name: dev_sol
+      solution_name: DemoSolution
       #Update your values here
       BUILD_ENVIRONMENT_URL: 'https://orga696181f.crm8.dynamics.com/'
       PRODUCTION_ENVIRONMENT_URL:  'https://orgf8df6d60.crm8.dynamics.com/'
